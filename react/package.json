@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "@types/node": "^11.13.4",
+    "@types/react": "^16.8.13",
+    "eslint": "^5.16.0",
+    "eslint-config-vtex-react": "^4.1.0",
+    "prettier": "^1.18.2",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": "3.5.2"
+  },
+  "dependencies": {
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
+  }
+}
