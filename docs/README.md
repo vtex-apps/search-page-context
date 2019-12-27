@@ -10,8 +10,7 @@ This app is the search page context, contains three contexts.
 
 ## Usage
 
-```
-
+```jsx
 import {
   useSearchPageState,
   useSearchPage,
@@ -23,5 +22,4 @@ import {
 const { pagination, searchQuery } = useSearchPage()
 const { isFetchingMore } = useSearchPageState()
 const dispatch = useSearchPageStateDispatch()
-
 ```
