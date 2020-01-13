@@ -20,6 +20,7 @@ interface State {
 
 interface InitialArgs {
   mobileLayout: string
+  showContentLoader: boolean
 }
 
 type ReducerActions =
@@ -45,7 +46,7 @@ function reducer(state: State, action: ReducerActions): State {
 const useSearchPageStateReducer = (initialState: InitialArgs) => {
   return useReducer(reducer, {
     mobileLayout: initialState.mobileLayout,
-    showContentLoader: true,
+    showContentLoader: initialState.showContentLoader,
     isFetchingMore: false,
   })
 }
