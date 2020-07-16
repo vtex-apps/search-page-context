@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- `SET_CONTENT_LOADER` action to the `searchPageState` reducer.
+
 ## [0.0.3] - 2020-01-13
 ### Added
 - `showContentLoader` variable to initial args of reducer.

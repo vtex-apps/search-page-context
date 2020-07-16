@@ -27,6 +27,7 @@ type ReducerActions =
   | { type: 'SWITCH_LAYOUT'; args: { mobileLayout: string } }
   | { type: 'HIDE_CONTENT_LOADER' }
   | { type: 'SET_FETCHING_MORE'; args: { isFetchingMore: boolean } }
+  | { type: 'SET_CONTENT_LOADER'; args: { showContentLoader: boolean } }
 
 function reducer(state: State, action: ReducerActions): State {
   switch (action.type) {
@@ -38,6 +39,10 @@ function reducer(state: State, action: ReducerActions): State {
     case 'SET_FETCHING_MORE':
       const { isFetchingMore } = action.args
       return { ...state, isFetchingMore }
+    case 'SET_CONTENT_LOADER':
+      const { showContentLoader } = action.args
+      return { ...state, showContentLoader: Boolean(showContentLoader) }
+
     default:
       return state
   }
