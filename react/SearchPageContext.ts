@@ -4,18 +4,18 @@ const SearchPageContext = createContext({})
 
 const useSearchPage = () => useContext(SearchPageContext)
 
-const SearchPageStateContext = createContext({})
+const SearchPageStateContext = createContext({} as State)
 
 const useSearchPageState = () => useContext(SearchPageStateContext)
 
-const SearchPageStateDispatch = createContext(() => {})
+const SearchPageStateDispatch = createContext((_: ReducerActions) => {})
 
 const useSearchPageStateDispatch = () => useContext(SearchPageStateDispatch)
 
 interface State {
-  mobileLayout: string
-  showContentLoader: boolean
-  isFetchingMore: boolean
+  mobileLayout?: string
+  showContentLoader?: boolean
+  isFetchingMore?: boolean
   galleryLayout?: string
 }
 
