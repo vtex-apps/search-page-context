@@ -1,7 +1,7 @@
 {
   "name": "search-page-context",
   "vendor": "vtex",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "title": "VTEX Search Page Context",
   "description": "",
   "settingsSchema": {},
