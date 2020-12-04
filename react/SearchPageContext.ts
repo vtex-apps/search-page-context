@@ -39,29 +39,58 @@ type ReducerActions =
   | { type: 'SWITCH_LAYOUT'; args: { mobileLayout: string } }
   | { type: 'HIDE_CONTENT_LOADER' }
   | { type: 'SET_FETCHING_MORE'; args: { isFetchingMore: boolean } }
-  | { type: 'SET_GALLERY_LAYOUTS'; args: { galleryLayouts: LayoutOption[]  } }
-  | { type: 'SWITCH_GALLERY_LAYOUT'; args: { selectedGalleryLayout: string } }
+  | { type: 'SET_GALLERY_LAYOUTS'; args: { galleryLayouts: LayoutOption[] } }
+  | {
+      type: 'SWITCH_GALLERY_LAYOUT'
+      args: { selectedGalleryLayout: string; focus?: boolean }
+    }
   | { type: 'SET_FOCUS_GALLERY_LAYOUT'; args: { focusedGalleryLayout: string } }
 
 function reducer(state: State, action: ReducerActions): State {
   switch (action.type) {
-    case 'SWITCH_LAYOUT':
+    case 'SWITCH_LAYOUT': {
       const { mobileLayout } = action.args
+
       return { ...state, mobileLayout }
-    case 'HIDE_CONTENT_LOADER':
+    }
+
+    case 'HIDE_CONTENT_LOADER': {
       return { ...state, showContentLoader: false }
-    case 'SET_FETCHING_MORE':
+    }
+
+    case 'SET_FETCHING_MORE': {
       const { isFetchingMore } = action.args
+
       return { ...state, isFetchingMore }
-    case 'SET_GALLERY_LAYOUTS':
+    }
+
+    case 'SET_GALLERY_LAYOUTS': {
       const { galleryLayouts } = action.args
+
       return { ...state, galleryLayouts }
-    case 'SWITCH_GALLERY_LAYOUT':
-      const { selectedGalleryLayout } = action.args
-      return { ...state, selectedGalleryLayout, focusedGalleryLayout: selectedGalleryLayout }
-    case 'SET_FOCUS_GALLERY_LAYOUT':
+    }
+
+    case 'SWITCH_GALLERY_LAYOUT': {
+      const { selectedGalleryLayout, focus = true } = action.args
+
+      const newState = {
+        ...state,
+        selectedGalleryLayout,
+      }
+
+      if (focus) {
+        newState.focusedGalleryLayout = selectedGalleryLayout
+      }
+
+      return newState
+    }
+
+    case 'SET_FOCUS_GALLERY_LAYOUT': {
       const { focusedGalleryLayout } = action.args
+
       return { ...state, focusedGalleryLayout }
+    }
+
     default:
       return state
   }
@@ -72,7 +101,6 @@ const useSearchPageStateReducer = (initialState: InitialArgs) => {
     mobileLayout: initialState.mobileLayout,
     showContentLoader: initialState.showContentLoader,
     selectedGalleryLayout: initialState.selectedGalleryLayout,
-    focusedGalleryLayout: initialState.selectedGalleryLayout,
     isFetchingMore: false,
   })
 }
